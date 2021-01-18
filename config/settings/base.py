@@ -75,7 +75,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "repo_scrapper.users.apps.UsersConfig",
-    # Your stuff: custom apps go here
+    "repo_scrapper.utils",
+    "repo_scrapper.core",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -275,10 +276,15 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_URLS_REGEX = r"^/api/.*$"
-# Your stuff...
-# ------------------------------------------------------------------------------
+
+# :::::::::::::::::::::::::::::::::::::::
+#            SCRAPPER SETTINGS
+# :::::::::::::::::::::::::::::::::::::::
+MAX_RECURSION_DEPTH = env('MAX_RECURSION_DEPTH', default=2)
+MAX_FOLLOWERS_DEPTH = env('MAX_FOLLOWERS_DEPTH', default=MAX_RECURSION_DEPTH)
+MAX_FOLLOWING_DEPTH = env('MAX_FOLLOWING_DEPTH', default=MAX_RECURSION_DEPTH)

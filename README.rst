@@ -6,84 +6,57 @@ Github repository scrapper
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
      :target: https://github.com/pydanny/cookiecutter-django/
      :alt: Built with Cookiecutter Django
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-     :target: https://github.com/ambv/black
-     :alt: Black code style
 
 
 :License: GPLv3
 
 
-Settings
---------
+Local Development
+-----------------
 
-Moved to settings_.
+Pre-requisites for Local Environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
+We used Docker, so before continuing please be sure you have installed the following software:
 
-Basic Commands
---------------
+1. `Docker <https://docs.docker.com/install/#supported-platforms>`_
+2. `Docker Compose <https://docs.docker.com/compose/install/>`_
 
-Setting Up Your Users
-^^^^^^^^^^^^^^^^^^^^^
+Local Development
+^^^^^^^^^^^^^^^^^
 
-* To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+Build your containers using the following command::
 
-* To create an **superuser account**, use this command::
+    $ docker-compose -f local.yml build
 
-    $ python manage.py createsuperuser
+Now start django server using::
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+    $ docker-compose -f local.yml up
 
-Type checks
-^^^^^^^^^^^
+Running Django commands
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Running type checks with mypy:
+You can run django management commands from the container, here are some commonly used commands::
 
-::
-
-  $ mypy repo_scrapper
-
-Test coverage
-^^^^^^^^^^^^^
-
-To run the tests, check your test coverage, and generate an HTML coverage report::
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-Running tests with py.test
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-::
-
-  $ pytest
-
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
+    $ docker-compose -f local.yml run --rm django python manage.py makemigrations
+    $ docker-compose -f local.yml run --rm django python manage.py migrate
+    $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 
 
+Using The Service
+-----------------
+
+Scrap user data
+^^^^^^^^^^^^^^^
+
+Run this command to collect information about a given github username::
 
 
+    $ docker-compose -f local.yml run --rm django python manage.py scrap_for_username --username <github-username>
 
-Deployment
-----------
+Query scrapped data
+^^^^^^^^^^^^^^^^^^^
 
-The following details how to deploy this application.
+You can now query the scrapped data using cUrl, postman or a similar client.
 
-
-
-Docker
-^^^^^^
-
-See detailed `cookiecutter-django Docker documentation`_.
-
-.. _`cookiecutter-django Docker documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html
-
-
-
+If you're using Postman you can load the local testing environment and collection importing them from etc/postman folder
