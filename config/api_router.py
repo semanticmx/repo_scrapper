@@ -1,15 +1,9 @@
 from django.urls import include, path
-from django.conf import settings
-from rest_framework.routers import DefaultRouter, SimpleRouter
 
-if settings.DEBUG:
-    router = DefaultRouter()
-else:
-    router = SimpleRouter()
+
+app_name = "api"
 
 urlpatterns = [
     path('repositories/', include('repo_scrapper.api.repositories.urls')),
+    path('users/', include('repo_scrapper.api.users.urls')),
 ]
-
-app_name = "api"
-urlpatterns += router.urls

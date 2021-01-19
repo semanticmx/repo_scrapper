@@ -33,6 +33,10 @@ Now start django server using::
 
     $ docker-compose -f local.yml up
 
+If you need to rebuild your container just do::
+
+    $ docker-compose -f local.yml up -d --build
+
 Running Django commands
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -59,4 +63,17 @@ Query scrapped data
 
 You can now query the scrapped data using cUrl, postman or a similar client.
 
-If you're using Postman you can load the local testing environment and collection importing them from etc/postman folder
+If you're using Postman you can download the collection from
+this `link <https://www.getpostman.com/collections/f89ed195e63d82301f71>`_
+
+Or just load the postman collection and environment from etc/postman folder in this repository.
+
+Available endpoints
+^^^^^^^^^^^^^^^^^^^
+
+1. GET /api/repositories/
+2. GET /api/repositories/<github_id>/
+3. GET /api/users/
+4. GET /api/users/<github_id>/
+5. GET /api/repositories/?name=<repository_name>
+6. GET /api/repositories/?language=<repository_language>
