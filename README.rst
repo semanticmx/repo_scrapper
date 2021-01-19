@@ -75,7 +75,7 @@ In order to avoid an infinite loop, we use MAX_RECURSION_DEPTH environment varia
 
 This means we can go down up to three levels of "follower followers" looking for new repositories info.
 
-If you need to collect more information you can set MAX_RECURSION_DEPTH to a higher value.
+If you need to collect more information you can set MAX_RECURSION_DEPTH to a higher value from .envs/.local/.django file
 
 Once you are comfortable setting the environment variable value, run this command::
 
@@ -84,6 +84,8 @@ Once you are comfortable setting the environment variable value, run this comman
 
 Query scrapped data
 ^^^^^^^^^^^^^^^^^^^
+
+Django server will run under http://localhost:8000
 
 You can now query the scrapped data using cUrl, postman or a similar client.
 
