@@ -19,6 +19,7 @@ Installation
 Clone the repository::
 
     $ git clone git@github.com:semanticmx/repo_scrapper.git
+    $ cd repo_scrapper
 
 Local Development
 -----------------
