@@ -1,9 +1,12 @@
 from rest_framework import serializers
 
 from repo_scrapper.core import models as core_models
+from repo_scrapper.api.users.serializers import GitHubUserSerializer
 
 
 class RepositorySerializer(serializers.ModelSerializer):
+    owner = GitHubUserSerializer()
+
     class Meta:
         model = core_models.Repository
         fields = [
@@ -17,6 +20,7 @@ class RepositorySerializer(serializers.ModelSerializer):
             'stargazers_count',
             'watchers_count',
             'forks',
+            'owner',
         ]
 
 
