@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "6e81772f-5a42-4163-9a1c-a8ae6d8e5ba0",
+		"name": "Repo Scrapper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List all repositories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}:{{port}}/api/repositories/",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"repositories",
+						""
+					]
+				},
+				"description": "Returns a list of all avaibale repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "Repository search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}:{{port}}/api/repositories/?language=Javascript",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"repositories",
+						""
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Javascript"
+						}
+					]
+				},
+				"description": "Returns a list of all avaibale repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "List all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}:{{port}}/api/users/",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				},
+				"description": "Returns a list of all avaibale repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "Repository Detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}:{{port}}/api/repositories/92905132/",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"repositories",
+						"92905132",
+						""
+					]
+				},
+				"description": "Returns a list of all avaibale repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "User Detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}:{{port}}/api/users/2141584/",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						"2141584",
+						""
+					]
+				},
+				"description": "Returns a list of all avaibale repositories"
+			},
+			"response": []
+		}
+	]
+}
