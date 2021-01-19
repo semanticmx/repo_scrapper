@@ -30,29 +30,6 @@ class Command(BaseCommand):
 
         return response.json()
 
-    def get_data_from_following_users(self, username=None):
-        """
-        gets data from username following users
-
-        """
-        if self.following_depth > settings.MAX_FOLLOWING_DEPTH:
-            self.stdout.write(self.style.NOTICE(f'Max following depth reached at {username}'))
-            return
-
-        self.following_depth += 1
-
-        data = self._get_json_data(
-            endpoint_function=self.service.get_following,
-            username=username
-        )
-        print(data)
-        for repo_info in data:
-            print(repo_info)
-            following = repo_info.get('login')
-            # self.get_data_from_owner(username=follower)
-            # self.get_data_from_followers(username=follower)
-            break
-
     def get_data_from_followers(self, username=None):
         """
         gets data from username followers

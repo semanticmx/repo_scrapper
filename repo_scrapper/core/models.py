@@ -23,10 +23,10 @@ class Repository(models.Model):
     git_url = models.URLField()
     language = models.CharField(max_length=255)
     disabled = models.BooleanField(default=False)
-    stargazers_count = models.IntegerField()
-    watchers_count = models.IntegerField()
-    forks = models.IntegerField()
-    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    stargazers_count = models.IntegerField(default=0)
+    watchers_count = models.IntegerField(default=0)
+    forks = models.IntegerField(default=0)
+    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=False)
 
     def _load_repo_from_json(self, data):
         """

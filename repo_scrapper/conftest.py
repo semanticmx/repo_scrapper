@@ -1,14 +1,14 @@
 import pytest
 
-from repo_scrapper.users.models import User
-from repo_scrapper.users.tests.factories import UserFactory
-
-
-@pytest.fixture(autouse=True)
-def media_storage(settings, tmpdir):
-    settings.MEDIA_ROOT = tmpdir.strpath
+from repo_scrapper.core import models as core_models
+from repo_scrapper.core.tests.factories import RepositoryFactory, UserFactory
 
 
 @pytest.fixture
-def user() -> User:
+def user() -> core_models.User:
     return UserFactory()
+
+
+@pytest.fixture
+def repo() -> core_models.Repository:
+    return RepositoryFactory()
