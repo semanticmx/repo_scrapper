@@ -1,7 +1,9 @@
 Repo Scrapper
 =============
 
-Github repository scrapper
+This project scraps data from GitHub repositories and users via a django management command.
+
+It also exposes scrapped data via a RESTful API.
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
      :target: https://github.com/pydanny/cookiecutter-django/
@@ -10,6 +12,13 @@ Github repository scrapper
 
 :License: GPLv3
 
+
+Installation
+------------
+
+Clone the repository::
+
+    $ git clone git@github.com:semanticmx/repo_scrapper.git
 
 Local Development
 -----------------
